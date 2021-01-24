@@ -2,7 +2,9 @@ body {
   font-family: sans-serif;
   margin: 0;
 }
-
+.todoCheck {
+  text-decoration: line-through;
+}
 #god {
   display: none;
 }
