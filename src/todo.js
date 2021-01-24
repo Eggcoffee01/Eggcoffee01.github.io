@@ -218,16 +218,20 @@ function addTodo(text, clickedCheck) {
     span = document.createElement("span"),
     delBtn = document.createElement("button"),
     infiBtn = document.createElement("button"),
-    recordBtn = document.createElement("button");
+    recordBtn = document.createElement("button"),
+    todoBtn = document.createElement("button");
   span.innerText = text;
   delBtn.id = "delete";
   delBtn.innerText = "❌";
+  todoBtn.innerText = "✔️";
+  todoBtn.addEventListener("click", todoBtnPressed);
   delBtn.addEventListener("click", deleteList);
   infiBtn.innerText = "♾️";
   infiBtn.addEventListener("click", changeList);
   recordBtn.id = "record";
   recordBtn.innerText = "⏺️";
   recordBtn.addEventListener("click", listClickHandler);
+  li.appendChild(todoBtn);
   li.appendChild(span);
   li.appendChild(delBtn);
   li.appendChild(recordBtn);
@@ -248,6 +252,13 @@ function addTodo(text, clickedCheck) {
   saveTodos();
   saveRoutines();
 }
+
+function todoBtnPressed(e) {
+  const parent = e.target.parentNode;
+  const span = parent.querySelector("span");
+  span.classList.toggle("todoCheck");
+}
+
 function addRoutine(text, clickedCheck) {
   const time = new Date();
   index += 1;
